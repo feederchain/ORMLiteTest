@@ -21,10 +21,9 @@ public class Parser {
     public Parser() {
         properties = new Properties();
         try {
-            InputStream inStream = new FileInputStream("src/simpledb/database.properties");
-            properties.load(inStream);
-            
-            inStream.close();
+            try (InputStream inStream = new FileInputStream("resources/database.properties")) {
+                properties.load(inStream);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }

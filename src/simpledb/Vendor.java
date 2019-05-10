@@ -37,6 +37,7 @@ public class Vendor extends Entity {
         this.phone = phone;
     }
     
+    @Override
     public String toString() {
         return getId() + "," + getName() + "," + getPhone();
     }

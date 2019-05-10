@@ -23,17 +23,10 @@ public class ConnectionFactory {
     }
 
     public static ConnectionSource getConnectionSource() throws IOException {
-        ConnectionSource connectionSource = null;
-        try {
-            connectionSource = new JdbcConnectionSource(PARSER.parseUrl(), PARSER.parseUser(), PARSER.parsePassword());
-
+        try (ConnectionSource connectionSource = new JdbcConnectionSource(PARSER.parseUrl(), PARSER.parseUser(), PARSER.parsePassword())) {
             return connectionSource;
         } catch (SQLException ex) {
             throw new RuntimeException("Error connecting to the database", ex);
-        } finally {
-            if (connectionSource != null) {
-                connectionSource.close();
-            }
         }
     }
 }

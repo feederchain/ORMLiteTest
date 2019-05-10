@@ -60,6 +60,7 @@ public class Item extends Entity {
         this.idVend = idVend;
     }
     
+    @Override
     public String toString() {
         //I need this to display two different versions for now
         String vendor = (getVendor() == null) ? getIdVend().toString() : "[" + getVendor() + "]";
